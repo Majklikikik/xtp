@@ -359,10 +359,10 @@ XTP::Molecule *Md2QmEngine::MoleculeFactory(CSG::Molecule *molMDTemplate) {
     string nameMolQM = this->getMoleculeName(molMDTemplate->getName());
     XTP::Molecule *molQMTemplate = this->getMoleculeType(nameMolQM);
 
-    int resnrOffset = molMDTemplate->getBead(0)->getResnr();
+    int resnrOffset = molMDTemplate->getBead<CSG::Bead *>(0)->getResnr();
 
     for (int i = 0; i < molMDTemplate->BeadCount(); i++) {
-        CSG::Bead *atomMD = molMDTemplate->getBead(i);
+        CSG::Bead *atomMD = molMDTemplate->getBead<CSG::Bead *>(i);
         try {
             XTP::Atom *counterpart =
                  this->getAtomType(molMDTemplate->getName(),
